@@ -6,4 +6,5 @@ public class GameJNILib {
     }
 
     public static native void initViewport(int width, int height);
+    public static native void update();
 }
