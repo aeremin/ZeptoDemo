@@ -5,5 +5,5 @@ public class GameJNILib {
         System.loadLibrary("zeptodemo");
     }
 
-    public static native void init(int width, int height);
+    public static native void initViewport(int width, int height);
 }

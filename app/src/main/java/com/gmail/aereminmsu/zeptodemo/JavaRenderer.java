@@ -14,7 +14,7 @@ public class JavaRenderer implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
-        GameJNILib.init(width, height);
+        GameJNILib.initViewport(width, height);
     }
 
     @Override
