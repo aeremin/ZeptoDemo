@@ -18,7 +18,7 @@ Field::Field(float screenWidthWorld, float screenHeightWorld)
       obstacleBoundingBox_(math::GeomVector2F(0.0f, 0.0f),
                            math::GeomVector2F(cObstacleWidth, screenHeightWorld))
 {
-    Obstacle firstObstacle(obstacleBoundingBox_ + math::GeomVector2F(cStartObstacleOffset * screenWidthWorld, 0.0f),
+    Obstacle firstObstacle(obstacleBoundingBox_ + offsetVector_(cStartObstacleOffset * screenWidthWorld),
                            cStartObstacleHoleBottom, cStartObstacleHoleTop);
     obstacles_.push_back(firstObstacle);
     update(0.0f);
@@ -36,7 +36,6 @@ float unitRandom() {
 }
 }
 
-
 void Field::generateObstacle_() {
     float distanceFromLast = cMinDistanceBetweenObstacles +
             (cMaxDistanceBetweenObstacles - cMinDistanceBetweenObstacles) * unitRandom();
@@ -50,8 +49,7 @@ void Field::generateObstacle_() {
         holeTop = unitRandom();
     }
 
-    Obstacle obstacle(obstacleBoundingBox_ + math::GeomVector2F(leftBorder, 0.0f),
-                      holeBottom, holeTop);
+    Obstacle obstacle(obstacleBoundingBox_ + offsetVector_(leftBorder), holeBottom, holeTop);
     obstacles_.push_back(obstacle);
 }
 
@@ -63,3 +61,6 @@ void Field::render() {
     rectangleRenderer_.render(rectangles);
 }
 
+math::GeomVector2F Field::offsetVector_(float offset) {
+    return math::GeomVector2F(offset, 0.0f);
+}

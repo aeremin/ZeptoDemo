@@ -18,6 +18,8 @@ public:
 private:
     void generateObstacle_();
 
+    static math::GeomVector2F offsetVector_(float offset);
+
 private:
     const float screenWidthWorld_, screenHeightWorld_;
     float currentOffset_ = 0.0f;
