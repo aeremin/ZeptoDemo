@@ -18,7 +18,7 @@ model {
 
     android.ndk {
         moduleName = "zeptodemo"
-        stl = "stlport_static"
+        stl = "gnustl_static"
         cppFlags.add("-std=c++11");
         cppFlags.add("-Werror")
         ldLibs.addAll(["log", "GLESv2"])
