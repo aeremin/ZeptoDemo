@@ -19,6 +19,9 @@ public:
     T& operator[](size_t ind) { return comps_[ind]; }
     const T& operator[](size_t ind) const { return comps_[ind]; }
 
+    T* data() {return comps_.data(); }
+    const T* data() const {return comps_.data(); }
+
     bool operator==(const GeomVector& other) const { return comps_ == other.comps_; }
 
     T lengthSquared() const  {

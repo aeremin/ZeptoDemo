@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include "../math/GeomVector.h"
 #include "GLHandle.h"
 
 namespace render {
@@ -13,7 +14,9 @@ public:
     ~ShaderProgram();
 
     GLuint  getAttributeLocation(const std::string& name) const;
+
     void setUniform(const std::string& name, float value);
+    void setUniform(const std::string& name, const math::GeomVector2F& value);
 
     void makeActive();
 

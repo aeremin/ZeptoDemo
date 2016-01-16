@@ -58,7 +58,7 @@ void Field::render() {
     for (const auto& obstacle : obstacles_)
         obstacle.collectRectangles(rectangles);
 
-    rectangleRenderer_.render(rectangles);
+    rectangleRenderer_.render(rectangles, offsetVector_(currentOffset_));
 }
 
 math::GeomVector2F Field::offsetVector_(float offset) {

@@ -1,5 +1,5 @@
 #pragma once
-
+#include <chrono>
 #include "Field.h"
 
 class Game {
@@ -11,5 +11,7 @@ public:
 
 private:
     Field field_;
+
+    std::chrono::steady_clock::time_point start_;
 };
 

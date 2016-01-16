@@ -10,7 +10,7 @@ class RectangleRenderer {
 public:
     RectangleRenderer();
 
-    void render(const std::vector<math::Rectangle>& rectangles);
+    void render(const std::vector<math::Rectangle>& rectangles, math::GeomVector2F globalOffset);
 
 private:
     std::unique_ptr<ShaderProgram> shaderProgram_;

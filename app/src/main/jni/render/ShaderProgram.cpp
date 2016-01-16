@@ -2,6 +2,7 @@
 #include <cassert>
 #include "Shader.h"
 #include "../Logging.h"
+#include "../math/GeomVector.h"
 
 namespace render {
 
@@ -40,10 +41,16 @@ namespace render {
         glUniform1f(id, value);
     }
 
+    void ShaderProgram::setUniform(const std::string& name, const math::GeomVector2F& value) {
+        makeActive();
+        auto id =glGetUniformLocation(id_, name.c_str());
+        assert(id != -1);
+        glUniform2fv(id, 1, value.data());
+    }
+
     void ShaderProgram::makeActive() {
         glUseProgram(id_);
     }
-
 
     GLuint ShaderProgram::getAttributeLocation(const std::string& name) const {
         return glGetAttribLocation(id_, name.c_str());
