@@ -4,7 +4,7 @@
 using namespace std::chrono;
 
 Game::Game()
-    : field_(1.0f, 1.0f),
+    : field_(2.0f, 2.0f),
       start_(steady_clock::now())
 {
 }
