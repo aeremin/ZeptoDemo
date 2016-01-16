@@ -45,4 +45,7 @@ namespace render {
     }
 
 
+    GLuint ShaderProgram::getAttributeLocation(const std::string& name) const {
+        return glGetAttribLocation(id_, name.c_str());
+    }
 }

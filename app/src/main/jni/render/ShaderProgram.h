@@ -9,15 +9,16 @@ class FragmentShader;
 
 class ShaderProgram {
 public:
-  ShaderProgram(VertexShader& vertexShader, FragmentShader& fragmentShader);
-  ~ShaderProgram();
+    ShaderProgram(VertexShader& vertexShader, FragmentShader& fragmentShader);
+    ~ShaderProgram();
 
-  void setUniform(const std::string& name, float value);
+    GLuint  getAttributeLocation(const std::string& name) const;
+    void setUniform(const std::string& name, float value);
 
-  void makeActive();
+    void makeActive();
 
 private:
-  GLHandle id_;
+    GLHandle id_;
 };
 
 }
