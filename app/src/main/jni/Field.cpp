@@ -49,7 +49,8 @@ void Field::generateObstacle_() {
         holeTop = unitRandom();
     }
 
-    Obstacle obstacle(obstacleBoundingBox_ + offsetVector_(leftBorder), holeBottom, holeTop);
+    Obstacle obstacle(obstacleBoundingBox_ + offsetVector_(leftBorder),
+                      screenHeightWorld_ * holeBottom, screenHeightWorld_ * holeTop);
     obstacles_.push_back(obstacle);
 }
 
