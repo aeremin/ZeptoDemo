@@ -86,6 +86,22 @@ GeomVector<T, n> operator*(const T& a, const GeomVector<T, n>& b) {
     return res;
 }
 
+template<typename T, size_t n>
+GeomVector<T, n> min(const GeomVector<T, n>& a, const GeomVector<T, n>& b) {
+    GeomVector<T, n> res;
+    for (int i = 0; i < n; ++i)
+        res[i] = std::min(a[i], b[i]);
+    return res;
+}
+
+template<typename T, size_t n>
+GeomVector<T, n> max(const GeomVector<T, n>& a, const GeomVector<T, n>& b) {
+    GeomVector<T, n> res;
+    for (int i = 0; i < n; ++i)
+        res[i] = std::max(a[i], b[i]);
+    return res;
+}
+
 using GeomVector2F = GeomVector<float, 2>;
 
 #endif //ZEPTODEMO_GEOMVECTOR_H
