@@ -14,6 +14,8 @@ public:
     float leftBorder() const;
     float rightBorder() const;
 
+    void collectRectangles(std::vector<math::Rectangle>& collectTo) const;
+
 private:
     const math::Rectangle upperRectangle_, lowerRectangle_;
 };

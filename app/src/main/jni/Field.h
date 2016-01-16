@@ -4,6 +4,8 @@
 #include <deque>
 
 #include "Obstacle.h"
+#include "math/GeomVector.h"
+#include "render/RectangleRenderer.h"
 
 class Field {
 public:
@@ -14,9 +16,16 @@ public:
     void render();
 
 private:
+    void generateObstacle_();
+
+private:
     const float screenWidthWorld_, screenHeightWorld_;
-    float currentOffset_;
+    float currentOffset_ = 0.0f;
+
+    const math::Rectangle obstacleBoundingBox_;
+
     std::deque<Obstacle> obstacles_;
+    render::RectangleRenderer rectangleRenderer_;
 
 };
 

@@ -1,13 +1,15 @@
 #pragma once
 
-#include "render/RectangleRenderer.h"
+#include "Field.h"
 
 class Game {
 public:
+    Game();
+
     void initViewport(int width, int height);
     void update();
 
 private:
-    render::RectangleRenderer rr_;
+    Field field_;
 };
 
