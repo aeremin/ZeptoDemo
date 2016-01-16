@@ -1,5 +1,4 @@
-#ifndef ZEPTODEMO_RECTANGLE_H
-#define ZEPTODEMO_RECTANGLE_H
+#pragma once
 
 #include "GeomVector.h"
 
@@ -12,5 +11,3 @@ struct Rectangle {
     const GeomVector2F maxCorner;
 };
 
-
-#endif //ZEPTODEMO_RECTANGLE_H

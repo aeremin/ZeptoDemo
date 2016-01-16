@@ -1,5 +1,4 @@
-#ifndef ZEPTODEMO_GEOMVECTOR_H
-#define ZEPTODEMO_GEOMVECTOR_H
+#pragma once
 
 #include <array>
 #include <algorithm>
@@ -104,4 +103,3 @@ GeomVector<T, n> max(const GeomVector<T, n>& a, const GeomVector<T, n>& b) {
 
 using GeomVector2F = GeomVector<float, 2>;
 
-#endif //ZEPTODEMO_GEOMVECTOR_H

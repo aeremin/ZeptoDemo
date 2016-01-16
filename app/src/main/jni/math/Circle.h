@@ -1,5 +1,4 @@
-#ifndef ZEPTODEMO_CIRCLE_H
-#define ZEPTODEMO_CIRCLE_H
+#pragma once
 
 #include "GeomVector.h"
 
@@ -11,5 +10,3 @@ struct Circle {
     const float radius;
 };
 
-
-#endif //ZEPTODEMO_CIRCLE_H
