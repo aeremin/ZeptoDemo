@@ -1,6 +1,7 @@
 #pragma once
 
 #include "GeomVector.h"
+namespace math {
 
 struct Circle {
     Circle(GeomVector2F center__, float radius__)
@@ -10,3 +11,4 @@ struct Circle {
     const float radius;
 };
 
+}

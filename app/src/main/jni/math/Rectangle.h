@@ -2,6 +2,8 @@
 
 #include "GeomVector.h"
 
+namespace math {
+
 struct Rectangle {
     Rectangle(GeomVector2F firstCorner, GeomVector2F secondCorner)
         : minCorner(min(firstCorner, secondCorner)), maxCorner(max(firstCorner, secondCorner))
@@ -11,3 +13,4 @@ struct Rectangle {
     const GeomVector2F maxCorner;
 };
 
+}

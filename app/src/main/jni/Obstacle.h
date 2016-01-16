@@ -7,15 +7,15 @@
 
 class Obstacle {
 public:
-    Obstacle(Rectangle boundingBox, float holeBottom, float holeTop);
+    Obstacle(const math::Rectangle& boundingBox, float holeBottom, float holeTop);
 
-    bool intersects(const Circle& circle) const;
+    bool intersects(const math::Circle& circle) const;
 
     float leftBorder() const;
     float rightBorder() const;
 
 private:
-    const Rectangle upperRectangle_, lowerRectangle_;
+    const math::Rectangle upperRectangle_, lowerRectangle_;
 };
 
 

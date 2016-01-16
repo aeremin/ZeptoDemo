@@ -3,9 +3,10 @@
 #include <array>
 #include <algorithm>
 
+namespace math {
+
 template<typename T, size_t n>
-class GeomVector
-{
+class GeomVector {
 public:
     GeomVector() : comps_() {
     }
@@ -103,3 +104,4 @@ GeomVector<T, n> max(const GeomVector<T, n>& a, const GeomVector<T, n>& b) {
 
 using GeomVector2F = GeomVector<float, 2>;
 
+}
