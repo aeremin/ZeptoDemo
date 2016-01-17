@@ -10,7 +10,7 @@ namespace {
     const math::GeomVector3F cBallColor = {0.3f, 0.7f, 0.2f};
     const math::GeomVector3F cObstaclesColor = {0.5f, 0.5f, 0.5f};
 
-    const float cGameSpeed = 0.0001f;
+    const float cGameSpeed = 0.0002f;
 }
 
 
