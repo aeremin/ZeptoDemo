@@ -1,5 +1,4 @@
-#ifndef ZEPTODEMO_FIELD_H
-#define ZEPTODEMO_FIELD_H
+#pragma once
 
 #include <deque>
 
@@ -30,6 +29,3 @@ private:
     render::RectangleRenderer rectangleRenderer_;
 
 };
-
-
-#endif //ZEPTODEMO_FIELD_H

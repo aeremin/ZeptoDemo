@@ -1,6 +1,4 @@
-#ifndef ZEPTODEMO_OBSTACLE_H
-#define ZEPTODEMO_OBSTACLE_H
-
+#pragma once
 
 #include "math/Rectangle.h"
 #include "math/Circle.h"
@@ -20,5 +18,3 @@ private:
     const math::Rectangle upperRectangle_, lowerRectangle_;
 };
 
-
-#endif //ZEPTODEMO_OBSTACLE_H
