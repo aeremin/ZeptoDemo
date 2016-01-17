@@ -26,7 +26,11 @@ Field::Field(float screenWidthWorld, float screenHeightWorld)
 
 void Field::update(float offset) {
     currentOffset_ = offset;
-    while (obstacles_.back().rightBorder() < screenWidthWorld_ + offset)
+
+    while (obstacles_.size() > 1 && obstacles_.front().rightBorder() < -1.0f + offset)
+        obstacles_.pop_front();
+
+    while (obstacles_.back().rightBorder() < -1.0 + screenWidthWorld_ + offset)
         generateObstacle_();
 }
 
