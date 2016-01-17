@@ -4,30 +4,6 @@
 
 namespace render {
 
-namespace {
-auto cVertexShader = R"(
-attribute vec2 position;
-
-// Poor man camera matrix
-uniform vec2 gOffset;
-
-void main() {
-    gl_Position = vec4(position - gOffset, 0.0, 1.0);
-})";
-
-auto cFragmentShader = R"(
-void main() {
-    gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
-}
-)";
-}
-
-RectangleRenderer::RectangleRenderer() {
-    VertexShader vertexShader(cVertexShader);
-    FragmentShader fragmentShader(cFragmentShader);
-    shaderProgram_.reset(new ShaderProgram(vertexShader, fragmentShader));
-}
-
 void RectangleRenderer::render(const std::vector<math::Rectangle>& rectangles,
                                math::GeomVector2F globalOffset) {
     std::vector<Vertex2D> vertices;

@@ -1,20 +1,13 @@
 #pragma once
-#include <memory>
 #include "../math/Rectangle.h"
-#include "ShaderProgram.h"
 #include "DataFormats.h"
+#include "BaseShaderRenderer.h"
 
 namespace render {
 
-class RectangleRenderer {
+class RectangleRenderer : BaseShaderRenderer {
 public:
-    RectangleRenderer();
-
     void render(const std::vector<math::Rectangle>& rectangles, math::GeomVector2F globalOffset);
-
-private:
-    std::unique_ptr<ShaderProgram> shaderProgram_;
-    ArrayBuffer<Vertex2D> verticesBuffer_;
 };
 
 }
