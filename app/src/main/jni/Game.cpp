@@ -3,6 +3,13 @@
 
 using namespace std::chrono;
 
+namespace {
+const math::GeomVector3F cBackGroundColor = {182 / 256.f, 225 / 256.f, 252 / 256.f};
+const math::GeomVector3F cBallColor = {0.3f, 0.7f, 0.2f};
+const math::GeomVector3F cObstaclesColor = {0.5f, 0.5f, 0.5f};
+}
+
+
 Game::Game()
     : start_(steady_clock::now())
 {
@@ -13,15 +20,15 @@ void Game::initViewport(int width, int height) {
     xScale_ = float(width) / float(height);
     rectangleRenderer_.reset(new render::RectangleRenderer);
     rectangleRenderer_->setXScale(xScale_);
-    rectangleRenderer_->setColor(math::GeomVector3F(0.5f, 0.5f, 0.5f));
+    rectangleRenderer_->setColor(cObstaclesColor);
     circleRenderer_.reset(new render::CircleRenderer);
     circleRenderer_->setXScale(xScale_);
-    circleRenderer_->setColor(math::GeomVector3F(0.3f, 0.7f, 0.2f));
+    circleRenderer_->setColor(cBallColor);
     restart_();
 }
 
 void Game::update() {
-    glClearColor(0.0f, 0.0f, 1.0, 1.0f);
+    glClearColor(cBackGroundColor[0], cBackGroundColor[1], cBackGroundColor[2], 1.0f);
     glClear( GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
     float offset = 0.0001 * duration_cast<milliseconds>(steady_clock::now() - start_).count();
     field_->update(offset);
