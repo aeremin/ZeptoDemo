@@ -21,13 +21,20 @@ Game::Game()
 void Game::initViewport(int width, int height) {
     glViewport(0, 0, width, height);
     xScale_ = float(width) / float(height);
+    createRenderers_();
+    restart_();
+}
+
+void Game::createRenderers_() {
     rectangleRenderer_.reset(new render::RectangleRenderer);
     rectangleRenderer_->setXScale(xScale_);
     rectangleRenderer_->setColor(cObstaclesColor);
     circleRenderer_.reset(new render::CircleRenderer);
     circleRenderer_->setXScale(xScale_);
     circleRenderer_->setColor(cBallColor);
-    restart_();
+    scoreRenderer_.reset(new render::NumberRenderer);
+    scoreRenderer_->setColor(cBallColor);
+    scoreRenderer_->setXScale(xScale_);
 }
 
 void Game::update() {
@@ -44,6 +51,8 @@ void Game::update() {
 
     if (field_->intersects(ball_->getCollisionCircle()))
         restart_();
+
+    scoreRenderer_->render(1234567890, math::GeomVector2F(-xScale_ + 0.1f, 0.7f));
 
     // TODO: count scores
 }

@@ -4,6 +4,7 @@
 #include "Field.h"
 #include "Ball.h"
 #include "../render/RectangleRenderer.h"
+#include "../render/NumberRenderer.h"
 
 namespace engine {
 
@@ -18,6 +19,7 @@ public:
     void onTouch();
 
 private:
+    void createRenderers_();
     void restart_();
 
     std::unique_ptr<Field> field_;
@@ -25,6 +27,7 @@ private:
 
     float xScale_;
 
+    std::unique_ptr<render::NumberRenderer> scoreRenderer_;
     std::unique_ptr<render::CircleRenderer> circleRenderer_;
     std::unique_ptr<render::RectangleRenderer> rectangleRenderer_;
 
