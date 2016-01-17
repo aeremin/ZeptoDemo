@@ -1,7 +1,9 @@
 #pragma once
-#include "math/GeomVector.h"
-#include "math/Circle.h"
-#include "render/CircleRenderer.h"
+#include "../math/GeomVector.h"
+#include "../math/Circle.h"
+#include "../render/CircleRenderer.h"
+
+namespace engine {
 
 class Ball {
 public:
@@ -11,7 +13,7 @@ public:
 
     void punch();
 
-    void render(render::CircleRenderer& renderer);
+    void render(render::CircleRenderer &renderer);
 
     math::Circle getCollisionCircle() const;
 
@@ -20,3 +22,5 @@ private:
     math::GeomVector2F currentPosition_;
     math::GeomVector2F lastPunchPosition_;
 };
+
+}

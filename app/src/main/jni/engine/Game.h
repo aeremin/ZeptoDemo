@@ -3,13 +3,18 @@
 #include <memory>
 #include "Field.h"
 #include "Ball.h"
+#include "../render/RectangleRenderer.h"
+
+namespace engine {
 
 class Game {
 public:
     Game();
 
     void initViewport(int width, int height);
+
     void update();
+
     void onTouch();
 
 private:
@@ -26,3 +31,4 @@ private:
     std::chrono::steady_clock::time_point start_;
 };
 
+}

@@ -3,8 +3,10 @@
 #include <deque>
 
 #include "Obstacle.h"
-#include "math/GeomVector.h"
-#include "render/RectangleRenderer.h"
+#include "../math/GeomVector.h"
+#include "../render/RectangleRenderer.h"
+
+namespace engine {
 
 class Field {
 public:
@@ -12,9 +14,9 @@ public:
 
     void update(float offset);
 
-    void render(render::RectangleRenderer& renderer);
+    void render(render::RectangleRenderer &renderer);
 
-    bool intersects(const math::Circle& circle) const;
+    bool intersects(const math::Circle &circle) const;
 
 private:
     void generateObstacle_();
@@ -30,3 +32,5 @@ private:
 
     std::deque<Obstacle> obstacles_;
 };
+
+}
