@@ -29,8 +29,10 @@ Field::Field(float screenWidthWorld)
 
 void Field::update(float offset) {
     while (obstacles_.size() > 1 &&
-           obstacles_.front().rightBorder() < -screenWidthWorld_ / 2.0f + offset)
+           obstacles_.front().rightBorder() < -screenWidthWorld_ / 2.0f + offset) {
         obstacles_.pop_front();
+        ++deletedObstacles_;
+    }
 
     while (obstacles_.back().rightBorder() < screenWidthWorld_ / 2.0f + offset)
         generateObstacle_();
@@ -90,4 +92,10 @@ bool Field::intersects(const math::Circle &circle) const {
 }
 
 
+int Field::getObstaclesCountOnLeftOf(float position) const {
+    auto isObstacleOnTheLeftOf = [&](const Obstacle& obstacle) {
+        return obstacle.rightBorder() <= position;
+    };
+    return deletedObstacles_ + std::count_if(begin(obstacles_), end(obstacles_), isObstacleOnTheLeftOf);
+}
 }

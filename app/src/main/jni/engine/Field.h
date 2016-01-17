@@ -13,10 +13,11 @@ public:
     Field(float screenWidthWorld);
 
     void update(float offset);
-
     void render(render::RectangleRenderer &renderer);
 
     bool intersects(const math::Circle &circle) const;
+
+    int getObstaclesCountOnLeftOf(float position) const;
 
 private:
     void generateObstacle_();
@@ -31,6 +32,7 @@ private:
     const math::Rectangle obstacleBoundingBox_;
 
     std::deque<Obstacle> obstacles_;
+    int deletedObstacles_ = 0;
 };
 
 }

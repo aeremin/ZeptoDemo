@@ -49,12 +49,12 @@ void Game::update() {
     field_->render(*rectangleRenderer_);
     ball_->render(*circleRenderer_);
 
-    if (field_->intersects(ball_->getCollisionCircle()))
+    auto ballCircle = ball_->getCollisionCircle();
+    scoreRenderer_->render(field_->getObstaclesCountOnLeftOf(ballCircle.center[0] - ballCircle.radius),
+                           math::GeomVector2F(-xScale_ + 0.1f, 0.7f));
+
+    if (field_->intersects(ballCircle))
         restart_();
-
-    scoreRenderer_->render(1234567890, math::GeomVector2F(-xScale_ + 0.1f, 0.7f));
-
-    // TODO: count scores
 }
 
 void Game::onTouch() {
