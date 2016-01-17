@@ -1,5 +1,6 @@
 #pragma once
 #include <chrono>
+#include <memory>
 #include "Field.h"
 #include "Ball.h"
 
@@ -11,8 +12,12 @@ public:
     void update();
 
 private:
-    Field field_;
+    std::unique_ptr<Field> field_;
     Ball ball_;
+
+    std::unique_ptr<render::CircleRenderer> circleRenderer_;
+    std::unique_ptr<render::RectangleRenderer> rectangleRenderer_;
+
     std::chrono::steady_clock::time_point start_;
 };
 

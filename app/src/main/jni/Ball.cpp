@@ -23,8 +23,8 @@ void Ball::punch() {
     lastPunchPosition_ = currentPosition_;
 }
 
-void Ball::render() {
-    circleRenderer_.render(getCollisionCircle());
+void Ball::render(render::CircleRenderer& renderer) {
+    renderer.render(getCollisionCircle());
 }
 
 math::Circle Ball::getCollisionCircle() const {

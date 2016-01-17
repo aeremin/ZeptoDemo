@@ -8,11 +8,11 @@
 
 class Field {
 public:
-    Field(float screenWidthWorld, float screenHeightWorld);
+    Field(float screenWidthWorld);
 
     void update(float offset);
 
-    void render();
+    void render(render::RectangleRenderer& renderer);
 
 private:
     void generateObstacle_();
@@ -20,12 +20,11 @@ private:
     static math::GeomVector2F offsetVector_(float offset);
 
 private:
-    const float screenWidthWorld_, screenHeightWorld_;
+    const float screenHeightWorld_ = 2.0;
+    const float screenWidthWorld_;
     float currentOffset_ = 0.0f;
 
     const math::Rectangle obstacleBoundingBox_;
 
     std::deque<Obstacle> obstacles_;
-    render::RectangleRenderer rectangleRenderer_;
-
 };

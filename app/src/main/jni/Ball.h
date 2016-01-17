@@ -11,13 +11,11 @@ public:
 
     void punch();
 
-    void render();
+    void render(render::CircleRenderer& renderer);
 
     math::Circle getCollisionCircle() const;
 
 private:
     math::GeomVector2F currentPosition_;
     math::GeomVector2F lastPunchPosition_;
-
-    render::CircleRenderer circleRenderer_;
 };

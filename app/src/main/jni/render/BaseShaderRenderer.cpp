@@ -9,9 +9,12 @@ attribute vec2 position;
 
 // Poor man camera matrix
 uniform vec2 gOffset;
+uniform float gXScale;
 
 void main() {
-    gl_Position = vec4(position - gOffset, 0.0, 1.0);
+    vec2 transformedPosition = position - gOffset;
+    transformedPosition.x /= gXScale;
+    gl_Position = vec4(transformedPosition, 0.0, 1.0);
 })";
 
 auto cFragmentShader = R"(

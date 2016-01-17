@@ -7,7 +7,12 @@ namespace render {
 
 class RectangleRenderer : BaseShaderRenderer {
 public:
+    RectangleRenderer(float xScale);
+
     void render(const std::vector<math::Rectangle>& rectangles, math::GeomVector2F globalOffset);
+
+private:
+    const float xScale_;
 };
 
 }

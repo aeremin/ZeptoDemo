@@ -12,13 +12,12 @@ const float cMinHoleHeight = 0.4;
 }
 
 
-Field::Field(float screenWidthWorld, float screenHeightWorld)
+Field::Field(float screenWidthWorld)
     : screenWidthWorld_(screenWidthWorld),
-      screenHeightWorld_(screenHeightWorld),
       obstacleBoundingBox_(math::GeomVector2F(0.0f, 0.0f),
-                           math::GeomVector2F(cObstacleWidth, screenHeightWorld))
+                           math::GeomVector2F(cObstacleWidth, screenHeightWorld_))
 {
-    Obstacle firstObstacle(obstacleBoundingBox_ + offsetVector_(cStartObstacleOffset * screenWidthWorld),
+    Obstacle firstObstacle(obstacleBoundingBox_ + offsetVector_(cStartObstacleOffset),
                            cStartObstacleHoleBottom, cStartObstacleHoleTop);
     obstacles_.push_back(firstObstacle);
     update(0.0f);
@@ -27,10 +26,10 @@ Field::Field(float screenWidthWorld, float screenHeightWorld)
 void Field::update(float offset) {
     currentOffset_ = offset;
 
-    while (obstacles_.size() > 1 && obstacles_.front().rightBorder() < -1.0f + offset)
+    while (obstacles_.size() > 1 && obstacles_.front().rightBorder() < -screenWidthWorld_ / 2.0f + offset)
         obstacles_.pop_front();
 
-    while (obstacles_.back().rightBorder() < -1.0 + screenWidthWorld_ + offset)
+    while (obstacles_.back().rightBorder() < screenWidthWorld_ / 2.0f + offset)
         generateObstacle_();
 }
 
@@ -58,12 +57,12 @@ void Field::generateObstacle_() {
     obstacles_.push_back(obstacle);
 }
 
-void Field::render() {
+void Field::render(render::RectangleRenderer& renderer) {
     std::vector<math::Rectangle> rectangles;
     for (const auto& obstacle : obstacles_)
         obstacle.collectRectangles(rectangles);
 
-    rectangleRenderer_.render(rectangles, math::GeomVector2F(currentOffset_, 1.0f));
+    renderer.render(rectangles, math::GeomVector2F(currentOffset_, 1.0f));
 }
 
 math::GeomVector2F Field::offsetVector_(float offset) {
