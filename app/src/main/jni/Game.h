@@ -10,6 +10,7 @@ public:
 
     void initViewport(int width, int height);
     void update();
+    void onTouch();
 
 private:
     std::unique_ptr<Field> field_;

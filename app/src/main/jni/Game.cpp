@@ -31,3 +31,6 @@ void Game::update() {
     // TODO: count scores
 }
 
+void Game::onTouch() {
+    ball_.punch();
+}
