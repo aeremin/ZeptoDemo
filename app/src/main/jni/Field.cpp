@@ -75,7 +75,7 @@ math::GeomVector2F Field::offsetVector_(float offset) {
 }
 
 bool Field::intersects(const math::Circle &circle) const {
-    if (1 - fabs(circle.center[1]) < circle.radius)
+    if (cScreenTopWorld - fabs(circle.center[1]) < circle.radius)
         return true; // Intersects floor/ceiling
 
     auto allRectangles = getAllRectangles_();
