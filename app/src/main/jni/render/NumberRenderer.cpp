@@ -48,6 +48,9 @@ void NumberRenderer::render(uint64_t number, math::GeomVector2F position) {
         number /= 10;
     }
 
+    if (digits.empty())
+        digits.push_back(0);
+
     glLineWidth(3.0f);
 
     shaderProgram_->makeActive();
