@@ -16,11 +16,6 @@ float Obstacle::rightBorder() const {
     return upperRectangle_.maxCorner[0];
 }
 
-bool Obstacle::intersects(const math::Circle &circle) const {
-    // TODO: implement
-    return false;
-}
-
 void Obstacle::collectRectangles(std::vector<math::Rectangle>& collectTo) const {
     collectTo.push_back(upperRectangle_);
     collectTo.push_back(lowerRectangle_);

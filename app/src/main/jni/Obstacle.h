@@ -7,8 +7,6 @@ class Obstacle {
 public:
     Obstacle(const math::Rectangle& boundingBox, float holeBottom, float holeTop);
 
-    bool intersects(const math::Circle& circle) const;
-
     float leftBorder() const;
     float rightBorder() const;
 
