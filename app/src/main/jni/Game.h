@@ -13,8 +13,12 @@ public:
     void onTouch();
 
 private:
+    void restart_();
+
     std::unique_ptr<Field> field_;
-    Ball ball_;
+    std::unique_ptr<Ball> ball_;
+
+    float xScale_;
 
     std::unique_ptr<render::CircleRenderer> circleRenderer_;
     std::unique_ptr<render::RectangleRenderer> rectangleRenderer_;

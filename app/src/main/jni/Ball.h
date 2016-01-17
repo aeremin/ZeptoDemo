@@ -16,6 +16,7 @@ public:
     math::Circle getCollisionCircle() const;
 
 private:
+    const math::GeomVector2F startPosition_;
     math::GeomVector2F currentPosition_;
     math::GeomVector2F lastPunchPosition_;
 };

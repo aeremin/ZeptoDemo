@@ -7,15 +7,12 @@
 
 namespace render {
 
-class CircleRenderer : BaseShaderRenderer {
+class CircleRenderer : public  BaseShaderRenderer {
 public:
-    CircleRenderer(float xScale);
-
     void render(const math::Circle& circle);
 
 private:
     std::vector<Vertex2D> vertices_;
-    const float xScale_;
 };
 
 }

@@ -48,6 +48,13 @@ namespace render {
         glUniform2fv(id, 1, value.data());
     }
 
+    void ShaderProgram::setUniform(const std::string& name, const math::GeomVector3F& value) {
+        makeActive();
+        auto id =glGetUniformLocation(id_, name.c_str());
+        assert(id != -1);
+        glUniform3fv(id, 1, value.data());
+    }
+
     void ShaderProgram::makeActive() {
         glUseProgram(id_);
     }

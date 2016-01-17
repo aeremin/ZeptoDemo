@@ -106,5 +106,6 @@ GeomVector<T, n> max(const GeomVector<T, n>& a, const GeomVector<T, n>& b) {
 }
 
 using GeomVector2F = GeomVector<float, 2>;
+using GeomVector3F = GeomVector<float, 3>;
 
 }

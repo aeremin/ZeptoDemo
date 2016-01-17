@@ -4,11 +4,7 @@
 
 namespace render {
 
-RectangleRenderer::RectangleRenderer(float xScale) : xScale_(xScale) {
-}
-
-void RectangleRenderer::render(const std::vector<math::Rectangle>& rectangles,
-                               math::GeomVector2F globalOffset) {
+void RectangleRenderer::render(const std::vector<math::Rectangle>& rectangles) {
     std::vector<Vertex2D> vertices;
     vertices.reserve(6 * rectangles.size());
     for (auto& rect : rectangles) {
@@ -22,8 +18,6 @@ void RectangleRenderer::render(const std::vector<math::Rectangle>& rectangles,
     }
 
     shaderProgram_->makeActive();
-    shaderProgram_->setUniform("gOffset", globalOffset);
-    shaderProgram_->setUniform("gXScale", xScale_);
 
     verticesBuffer_.bind();
     verticesBuffer_.setUpLayout(*shaderProgram_);

@@ -14,15 +14,17 @@ public:
 
     void render(render::RectangleRenderer& renderer);
 
+    bool intersects(const math::Circle& circle) const;
+
 private:
     void generateObstacle_();
+
+    std::vector<math::Rectangle> getAllRectangles_() const;
 
     static math::GeomVector2F offsetVector_(float offset);
 
 private:
-    const float screenHeightWorld_ = 2.0;
     const float screenWidthWorld_;
-    float currentOffset_ = 0.0f;
 
     const math::Rectangle obstacleBoundingBox_;
 

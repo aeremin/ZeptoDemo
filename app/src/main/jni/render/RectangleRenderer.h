@@ -5,14 +5,9 @@
 
 namespace render {
 
-class RectangleRenderer : BaseShaderRenderer {
+class RectangleRenderer : public BaseShaderRenderer {
 public:
-    RectangleRenderer(float xScale);
-
-    void render(const std::vector<math::Rectangle>& rectangles, math::GeomVector2F globalOffset);
-
-private:
-    const float xScale_;
+    void render(const std::vector<math::Rectangle>& rectangles);
 };
 
 }

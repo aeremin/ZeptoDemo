@@ -17,6 +17,7 @@ public:
 
     void setUniform(const std::string& name, float value);
     void setUniform(const std::string& name, const math::GeomVector2F& value);
+    void setUniform(const std::string& name, const math::GeomVector3F& value);
 
     void makeActive();
 

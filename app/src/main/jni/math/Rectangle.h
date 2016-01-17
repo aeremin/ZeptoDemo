@@ -1,6 +1,7 @@
 #pragma once
 
 #include "GeomVector.h"
+#include "Circle.h"
 
 namespace math {
 
@@ -12,4 +13,8 @@ struct Rectangle {
 };
 
 Rectangle operator+(const Rectangle& rect, const GeomVector2F& shift);
+
+
+bool intersects(const Circle& c, const Rectangle& r);
 }
+

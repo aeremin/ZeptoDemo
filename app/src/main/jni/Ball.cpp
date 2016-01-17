@@ -7,13 +7,15 @@ const float cGravitationalAcceleration = 15.0f;
 const float cPunchVerticalSpeed = 3.0f;
 }
 
-Ball::Ball(math::GeomVector2F startPosition) {
-    currentPosition_ = startPosition;
-    lastPunchPosition_ = startPosition;
+Ball::Ball(math::GeomVector2F startPosition)
+    : startPosition_(startPosition),
+      currentPosition_(startPosition)
+{
+    punch();
 }
 
 void Ball::update(float offset) {
-    auto timeFromLastPunch = offset - lastPunchPosition_[0];
+    auto timeFromLastPunch = offset - lastPunchPosition_[0] + startPosition_[0];
     auto verticalOffset = cPunchVerticalSpeed * timeFromLastPunch
                           - cGravitationalAcceleration * timeFromLastPunch * timeFromLastPunch;
     currentPosition_ = lastPunchPosition_ + math::GeomVector2F(timeFromLastPunch, verticalOffset);

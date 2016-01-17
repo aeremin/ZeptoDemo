@@ -18,8 +18,10 @@ void main() {
 })";
 
 auto cFragmentShader = R"(
+uniform vec3 gColor;
+
 void main() {
-    gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+    gl_FragColor = vec4(gColor, 1.0);
 }
 )";
 }
@@ -30,4 +32,15 @@ BaseShaderRenderer::BaseShaderRenderer() {
     shaderProgram_.reset(new ShaderProgram(vertexShader, fragmentShader));
 }
 
+void BaseShaderRenderer::setGlobalOffset(const math::GeomVector2F& offset) {
+    shaderProgram_->setUniform("gOffset", offset);
+}
+
+void BaseShaderRenderer::setXScale(float xScale) {
+    shaderProgram_->setUniform("gXScale", xScale);
+}
+
+void BaseShaderRenderer::setColor(const math::GeomVector3F& color) {
+    shaderProgram_->setUniform("gColor", color);
+}
 }
