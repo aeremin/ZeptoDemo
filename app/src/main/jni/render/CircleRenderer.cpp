@@ -19,7 +19,7 @@ void CircleRenderer::render(const math::Circle& circle) {
     }
 
     shaderProgram_->makeActive();
-    shaderProgram_->setUniform("gOffset", math::GeomVector2F(0.0f, -circle.center[1]));
+    shaderProgram_->setUniform("gOffset", math::GeomVector2F( xScale_ / 2.0f, -circle.center[1]));
     shaderProgram_->setUniform("gXScale", xScale_);
 
     verticesBuffer_.bind();

@@ -4,7 +4,7 @@
 using namespace std::chrono;
 
 Game::Game()
-    : ball_({0.25f, 0.0f}),
+    : ball_({0.25f, 1.0f}),
       start_(steady_clock::now())
 {
 }
@@ -23,8 +23,6 @@ void Game::update() {
     float offset = duration_cast<milliseconds>(steady_clock::now() - start_).count();
     field_->update(0.0001 * offset);
     ball_.update(0.0001 * offset);
-    if (ball_.getCollisionCircle().center[1] < -0.5f)
-        ball_.punch();
     field_->render(*rectangleRenderer_);
     ball_.render(*circleRenderer_);
     // TODO: intersection check

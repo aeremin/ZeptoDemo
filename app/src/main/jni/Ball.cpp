@@ -2,9 +2,9 @@
 
 namespace
 {
-const float cBallRadius = 0.2f;
-const float cGravitationalAcceleration = 10.3f;
-const float cPunchVerticalSpeed = 5.3f;
+const float cBallRadius = 0.09f;
+const float cGravitationalAcceleration = 15.0f;
+const float cPunchVerticalSpeed = 3.0f;
 }
 
 Ball::Ball(math::GeomVector2F startPosition) {

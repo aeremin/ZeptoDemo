@@ -2,12 +2,12 @@
 
 namespace
 {
-const float cObstacleWidth = 0.1f;
+const float cObstacleWidth = 0.3f;
 const float cStartObstacleHoleTop = 0.75f;
 const float cStartObstacleHoleBottom = 0.25f;
 const float cStartObstacleOffset = 0.5f;
-const float cMinDistanceBetweenObstacles = 0.3;
-const float cMaxDistanceBetweenObstacles = 0.6;
+const float cMinDistanceBetweenObstacles = 2 * cObstacleWidth;
+const float cMaxDistanceBetweenObstacles = 4 * cObstacleWidth;
 const float cMinHoleHeight = 0.4;
 }
 
