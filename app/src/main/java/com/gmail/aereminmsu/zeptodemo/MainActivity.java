@@ -15,6 +15,7 @@ public class MainActivity extends Activity {
         mGLSurfaceView = new SurfaceView(this);
         mGLSurfaceView.setEGLContextClientVersion(2);
         mGLSurfaceView.setRenderer(new JavaRenderer());
+        mGLSurfaceView.setPreserveEGLContextOnPause(true);
         setContentView(mGLSurfaceView);
     }
 
