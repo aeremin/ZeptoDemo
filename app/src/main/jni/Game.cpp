@@ -7,6 +7,8 @@ namespace {
 const math::GeomVector3F cBackGroundColor = {182 / 256.f, 225 / 256.f, 252 / 256.f};
 const math::GeomVector3F cBallColor = {0.3f, 0.7f, 0.2f};
 const math::GeomVector3F cObstaclesColor = {0.5f, 0.5f, 0.5f};
+
+const float cGameSpeed = 0.0001f;
 }
 
 
@@ -30,11 +32,11 @@ void Game::initViewport(int width, int height) {
 void Game::update() {
     glClearColor(cBackGroundColor[0], cBackGroundColor[1], cBackGroundColor[2], 1.0f);
     glClear( GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-    float offset = 0.0001 * duration_cast<milliseconds>(steady_clock::now() - start_).count();
-    field_->update(offset);
-    ball_->update(offset);
-    rectangleRenderer_->setGlobalOffset(math::GeomVector2F(offset, 0.0f));
-    circleRenderer_->setGlobalOffset(math::GeomVector2F(offset, 0.0f));
+    float timeOffset = cGameSpeed * duration_cast<milliseconds>(steady_clock::now() - start_).count();
+    field_->update(timeOffset);
+    ball_->update(timeOffset);
+    rectangleRenderer_->setGlobalOffset(math::GeomVector2F(timeOffset, 0.0f));
+    circleRenderer_->setGlobalOffset(math::GeomVector2F(timeOffset, 0.0f));
     field_->render(*rectangleRenderer_);
     ball_->render(*circleRenderer_);
 
