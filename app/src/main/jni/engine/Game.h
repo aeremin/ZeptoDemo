@@ -14,24 +14,31 @@ public:
 
     void initViewport(int width, int height);
 
-    void update();
+    void setXScale(float xScale);
 
+    void update();
     void onTouch();
+
+    void pause();
+    void resume();
 
 private:
     void createRenderers_();
-    void restart_();
+    void startGame_();
+
+    float xScale_ = 4.0 / 3.0;
 
     std::unique_ptr<Field> field_;
     std::unique_ptr<Ball> ball_;
-
-    float xScale_;
 
     std::unique_ptr<render::NumberRenderer> scoreRenderer_;
     std::unique_ptr<render::CircleRenderer> circleRenderer_;
     std::unique_ptr<render::RectangleRenderer> rectangleRenderer_;
 
     std::chrono::steady_clock::time_point start_;
+
+    bool paused_ = false;
+    std::chrono::steady_clock::time_point pauseStart_;
 };
 
 }

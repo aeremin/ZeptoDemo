@@ -1,6 +1,9 @@
 #include "Game.h"
 #include <GLES2/gl2.h>
 
+#include "../Logging.h"
+#include <string>
+
 using namespace std::chrono;
 
 namespace engine {
@@ -14,30 +17,38 @@ namespace {
 }
 
 
-Game::Game()
-        : start_(steady_clock::now()) {
+Game::Game() {
+    createRenderers_();
+    startGame_();
 }
 
 void Game::initViewport(int width, int height) {
+    LOGI("initViewport");
     glViewport(0, 0, width, height);
-    xScale_ = float(width) / float(height);
-    createRenderers_();
-    restart_();
+    setXScale(float(width) / float(height));
 }
 
 void Game::createRenderers_() {
     rectangleRenderer_.reset(new render::RectangleRenderer);
-    rectangleRenderer_->setXScale(xScale_);
     rectangleRenderer_->setColor(cObstaclesColor);
     circleRenderer_.reset(new render::CircleRenderer);
-    circleRenderer_->setXScale(xScale_);
     circleRenderer_->setColor(cBallColor);
     scoreRenderer_.reset(new render::NumberRenderer);
     scoreRenderer_->setColor(cBallColor);
-    scoreRenderer_->setXScale(xScale_);
+}
+
+void Game::setXScale(float xScale) {
+    rectangleRenderer_->setXScale(xScale);
+    circleRenderer_->setXScale(xScale);
+    scoreRenderer_->setXScale(xScale);
+    field_->setScreenWidthWorld(2.0f * xScale);
+    xScale_ = xScale;
 }
 
 void Game::update() {
+    if (paused_)
+        return;
+
     glClearColor(cBackGroundColor[0], cBackGroundColor[1], cBackGroundColor[2], 1.0f);
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
     float timeOffset =
@@ -54,17 +65,30 @@ void Game::update() {
                            math::GeomVector2F(-xScale_ + 0.1f, 0.7f));
 
     if (field_->intersects(ballCircle))
-        restart_();
+    {
+        LOGI("Game lost");
+        startGame_();
+    }
 }
 
 void Game::onTouch() {
     ball_->punch();
 }
 
-void Game::restart_() {
+void Game::startGame_() {
     start_ = steady_clock::now();
     field_.reset(new Field(2.0f * xScale_));
     ball_.reset(new Ball(math::GeomVector2F{-0.5f * xScale_, 0.0f}));
 }
 
+
+void Game::pause() {
+    paused_ = true;
+    pauseStart_ = steady_clock::now();
+}
+
+void Game::resume() {
+    paused_ = false;
+    start_ += steady_clock::now() - pauseStart_;
+}
 }

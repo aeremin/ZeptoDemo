@@ -11,6 +11,7 @@ namespace engine {
 class Field {
 public:
     Field(float screenWidthWorld);
+    void setScreenWidthWorld(float screenWidthWorld);
 
     void update(float offset);
     void render(render::RectangleRenderer &renderer);
@@ -27,7 +28,8 @@ private:
     static math::GeomVector2F offsetVector_(float offset);
 
 private:
-    const float screenWidthWorld_;
+    float screenWidthWorld_;
+    float currentOffset_;
 
     const math::Rectangle obstacleBoundingBox_;
 

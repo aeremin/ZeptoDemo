@@ -24,6 +24,7 @@ public class MainActivity extends Activity {
     {
         super.onResume();
         mGLSurfaceView.onResume();
+        GameJNILib.resume();
     }
 
     @Override
@@ -31,6 +32,7 @@ public class MainActivity extends Activity {
     {
         super.onPause();
         mGLSurfaceView.onPause();
+        GameJNILib.pause();
     }
 }
 

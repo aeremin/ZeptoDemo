@@ -27,7 +27,14 @@ Field::Field(float screenWidthWorld)
     update(0.0f);
 }
 
+void Field::setScreenWidthWorld(float screenWidthWorld) {
+    screenWidthWorld_ = screenWidthWorld;
+    update(currentOffset_);
+}
+
 void Field::update(float offset) {
+    currentOffset_ = offset;
+
     while (obstacles_.size() > 1 &&
            obstacles_.front().rightBorder() < -screenWidthWorld_ / 2.0f + offset) {
         obstacles_.pop_front();
